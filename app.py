@@ -114,11 +114,15 @@ formatted_agent_chain = (
 
 # --- 3. FastAPI App ---
 ##Need To Code
-app=FastAPI(title="Movie and wheather agent", version='1.0", description="A langchain agent (Gemini) with search_movies and get_weather tools,served via LangServe.")
+app = FastAPI(
+    title="Movie & Weather Agent",
+    version="1.0",
+    description="A LangChain agent (Gemini) with search_movies and get_weather tools,served via LangServe",
+)
 @app.get("/")
 def root():
-    return{"message":"Server is running.visit /agent/playground/ to chat,or/docs for the API."}
-add_routes(app,formatted_agent_chain,path"/agent")
+  return{"message":"Server is running.Visit /agent/playground/ to chat,or /docs for the API."}
+add_routes(app,formatted_agent_chain,path="/agent")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
